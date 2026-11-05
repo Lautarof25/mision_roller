@@ -986,6 +986,11 @@ h1 span {
         grid-template-columns: 1fr;
     }
 
+    .video-card video {
+        aspect-ratio: 9 / 16;
+        object-fit: contain;
+    }
+
     .locations {
         grid-column: auto;
     }
