@@ -159,6 +159,7 @@
         }
 
         .page-content {
+            position: relative;
             padding-block: 42px 64px;
         }
 
@@ -700,8 +701,110 @@
             text-underline-offset: 4px;
         }
 
-        .safety-gear {
-            display: none;
+        .slalom-course {
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .slalom-cone {
+            position: absolute;
+            display: block;
+            width: 52px;
+            height: 68px;
+            filter: drop-shadow(2px 2px 0 var(--ink));
+            animation: cone-bob 5s ease-in-out infinite;
+        }
+
+        .slalom-cone::before {
+            position: absolute;
+            z-index: 1;
+            top: 1px;
+            left: 13px;
+            width: 26px;
+            height: 52px;
+            background: linear-gradient(
+                to bottom,
+                var(--pink) 0 37%,
+                var(--white) 37% 51%,
+                var(--pink) 51% 67%,
+                var(--white) 67% 80%,
+                var(--pink) 80%
+            );
+            clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+            content: "";
+        }
+
+        .slalom-cone::after {
+            position: absolute;
+            bottom: 5px;
+            left: 2px;
+            width: 48px;
+            height: 11px;
+            border: 2px solid var(--ink);
+            border-radius: 4px;
+            background: var(--pink);
+            content: "";
+        }
+
+        .slalom-cone:nth-child(odd) {
+            left: -56px;
+        }
+
+        .slalom-cone:nth-child(even) {
+            right: -56px;
+        }
+
+        .slalom-cone:nth-child(1) {
+            top: 6%;
+            transform: rotate(-8deg);
+            animation-delay: -.6s;
+        }
+
+        .slalom-cone:nth-child(2) {
+            top: 18%;
+            transform: rotate(7deg);
+            animation-delay: -2.1s;
+        }
+
+        .slalom-cone:nth-child(3) {
+            top: 31%;
+            transform: rotate(9deg);
+            animation-delay: -1.2s;
+        }
+
+        .slalom-cone:nth-child(4) {
+            top: 44%;
+            transform: rotate(-8deg);
+            animation-delay: -3.4s;
+        }
+
+        .slalom-cone:nth-child(5) {
+            top: 57%;
+            transform: rotate(-7deg);
+            animation-delay: -2.6s;
+        }
+
+        .slalom-cone:nth-child(6) {
+            top: 70%;
+            transform: rotate(8deg);
+            animation-delay: -.9s;
+        }
+
+        .slalom-cone:nth-child(7) {
+            top: 83%;
+            transform: rotate(7deg);
+            animation-delay: -3.8s;
+        }
+
+        .slalom-cone:nth-child(8) {
+            top: 95%;
+            transform: rotate(-9deg);
+            animation-delay: -1.8s;
         }
 
         :focus-visible {
@@ -710,81 +813,80 @@
         }
 
         @media (min-width: 1280px) {
-            .page-content,
-            .site-footer {
-                position: relative;
+            .page-content {
                 z-index: 2;
-            }
-
-            .safety-gear {
-                position: fixed;
-                z-index: 1;
-                inset: 0;
-                display: block;
-                overflow: hidden;
-                pointer-events: none;
-            }
-
-            .gear-doodle {
-                position: absolute;
-                display: grid;
-                width: 62px;
-                aspect-ratio: 1;
-                place-items: center;
-                border: 2px solid var(--ink);
-                border-radius: 50%;
-                background: rgba(255, 240, 248, .92);
-                box-shadow: 3px 3px 0 var(--pink);
-                animation: gear-bob 6s ease-in-out infinite;
-            }
-
-            .gear-doodle svg {
-                width: 44px;
-                height: 44px;
-            }
-
-            .gear-doodle:nth-child(1),
-            .gear-doodle:nth-child(3) {
-                left: max(10px, calc((100vw - 1120px) / 2 - 72px));
-            }
-
-            .gear-doodle:nth-child(2),
-            .gear-doodle:nth-child(4) {
-                right: max(10px, calc((100vw - 1120px) / 2 - 72px));
-            }
-
-            .gear-doodle:nth-child(1) {
-                top: 21%;
-                animation-delay: -1s;
-            }
-
-            .gear-doodle:nth-child(2) {
-                top: 41%;
-                animation-delay: -3s;
-            }
-
-            .gear-doodle:nth-child(3) {
-                top: 63%;
-                animation-delay: -4s;
-            }
-
-            .gear-doodle:nth-child(4) {
-                top: 82%;
-                animation-delay: -2s;
             }
         }
 
-        @keyframes gear-bob {
+        @keyframes cone-bob {
             0%,
             100% {
-                transform: translateY(0) rotate(-5deg);
+                translate: 0 0;
             }
             50% {
-                transform: translateY(-7px) rotate(5deg);
+                translate: 0 -4px;
+            }
+        }
+
+        @media (max-width: 1279px) {
+            .slalom-cone {
+                width: 28px;
+                height: 40px;
+            }
+
+            .slalom-cone::before {
+                left: 7px;
+                width: 14px;
+                height: 31px;
+            }
+
+            .slalom-cone::after {
+                bottom: 3px;
+                left: 1px;
+                width: 26px;
+                height: 8px;
+                border-width: 1px;
+                border-radius: 3px;
+            }
+
+            .slalom-cone:nth-child(odd) {
+                left: 0;
+            }
+
+            .slalom-cone:nth-child(even) {
+                right: 0;
             }
         }
 
         @media (max-width: 760px) {
+            .slalom-cone {
+                width: 24px;
+                height: 36px;
+            }
+
+            .slalom-cone::before {
+                left: 6px;
+                width: 12px;
+                height: 28px;
+            }
+
+            .slalom-cone::after {
+                bottom: 3px;
+                left: 1px;
+                width: 22px;
+                height: 7px;
+                border-width: 1px;
+                border-radius: 3px;
+            }
+
+            .slalom-cone:nth-child(odd) {
+                left: -16px;
+            }
+
+            .slalom-cone:nth-child(even) {
+                right: -16px;
+            }
+
             .header-inner {
                 min-height: 72px;
             }
@@ -833,6 +935,14 @@
         }
 
         @media (max-width: 560px) {
+            .slalom-cone:nth-child(odd) {
+                left: -10px;
+            }
+
+            .slalom-cone:nth-child(even) {
+                right: -10px;
+            }
+
             .header-inner,
             .page-content,
             .footer-inner {
@@ -917,47 +1027,14 @@
                 animation-duration: .01ms !important;
                 animation-iteration-count: 1 !important;
             }
+
+            .slalom-cone {
+                animation: none;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="safety-gear" aria-hidden="true">
-        <span class="gear-doodle">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 32h40l-5 8H17l-5-8Z" fill="#ec168a" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
-                <circle cx="20" cy="48" r="6" fill="white" stroke="#111" stroke-width="3"/>
-                <circle cx="34" cy="48" r="6" fill="white" stroke="#111" stroke-width="3"/>
-                <circle cx="48" cy="48" r="6" fill="white" stroke="#111" stroke-width="3"/>
-                <path d="M20 31 25 19h15l5 12M28 19v12m9-12v12" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="m9 17 2 4 4 1-4 2-2 4-2-4-4-2 4-1 2-4Z" fill="#ec168a" stroke="#111" stroke-width="1.5"/>
-            </svg>
-        </span>
-        <span class="gear-doodle">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11 35c1-14 10-23 23-23 12 0 20 8 21 21l-9-3c-7-2-13-3-21-1l-14 6Z" fill="white" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
-                <path d="m11 35 14-6c8-2 14-1 21 1l9 3-3 6H14l-3-4Z" fill="#ec168a" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
-                <path d="m26 17-2 7m11-8v6m9-2-3 5" stroke="#111" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M17 43h30" stroke="#111" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-        </span>
-        <span class="gear-doodle">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 11h22l7 10-4 28-14 7-14-7-4-28 7-10Z" fill="white" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
-                <path d="m21 21 11-5 11 5 3 19-14 9-14-9 3-19Z" fill="#ec168a" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
-                <path d="M25 25h14M23 32h18m-15 7 6 5 6-5" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="9" cy="16" r="3" fill="#ec168a" stroke="#111" stroke-width="2"/>
-                <circle cx="55" cy="49" r="3" fill="#ec168a" stroke="#111" stroke-width="2"/>
-            </svg>
-        </span>
-        <span class="gear-doodle">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 11h26l7 8-7 12H19l-7-12 7-8Z" fill="white" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
-                <path d="M17 21h30m-25 1 4 7m15-7-4 7" stroke="#111" stroke-width="3" stroke-linecap="round"/>
-                <path d="M18 37h28l6 9-7 7H19l-7-7 6-9Z" fill="#ec168a" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
-                <path d="M20 42h24m-17 1 2 5m9-5-2 5" stroke="#111" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-        </span>
-    </div>
     <header class="site-header">
         <div class="header-inner">
             <a class="brand" href="#" aria-label="Misión Rollers, inicio">
@@ -1181,6 +1258,16 @@
                 <span aria-hidden="true">💬</span> Escribime por WhatsApp
             </a>
         </section>
+        <div class="slalom-course" aria-hidden="true">
+            <span class="slalom-cone"></span>
+            <span class="slalom-cone"></span>
+            <span class="slalom-cone"></span>
+            <span class="slalom-cone"></span>
+            <span class="slalom-cone"></span>
+            <span class="slalom-cone"></span>
+            <span class="slalom-cone"></span>
+            <span class="slalom-cone"></span>
+        </div>
     </main>
 
     <footer class="site-footer">
