@@ -600,6 +600,15 @@
             object-fit: cover;
         }
 
+        .class-preview-video {
+            max-width: 360px;
+            margin-inline: auto;
+        }
+
+        .class-preview-video video {
+            aspect-ratio: 9 / 16;
+        }
+
         .social-card {
             background: var(--pink);
         }
@@ -1004,6 +1013,24 @@
             </div>
         </section>
         <div class="roller-swoosh" aria-hidden="true">Aprendé · Rodá · Disfrutá</div>
+
+        <section class="media-section" aria-labelledby="class-preview-title">
+            <div class="media-heading">
+                <p class="eyebrow">Antes de empezar</p>
+                <h2 id="class-preview-title">¿Cómo es una clase?</h2>
+                <p>Conocé la dinámica de una clase y preparate para disfrutar sobre ruedas.</p>
+            </div>
+            <figure class="media-card video-card class-preview-video">
+                <video controls playsinline preload="metadata" poster="roller_primer_plano.webp" aria-label="Video que muestra cómo se desarrolla una clase de rollers">
+                    <source src="clase_vistazo.mp4" type="video/mp4">
+                    Tu navegador no puede reproducir este video.
+                </video>
+                <figcaption class="media-caption">
+                    <h4>Un vistazo a la clase</h4>
+                    <p>Conocé el ambiente y la experiencia antes de sumarte.</p>
+                </figcaption>
+            </figure>
+        </section>
 
         <div class="content-grid">
             <section id="niveles" class="card level-card" aria-labelledby="levels-title">
