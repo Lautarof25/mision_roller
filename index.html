@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fffafc">
+    <meta name="description" content="Clases de rollers con Karen. Aprendé desde cero en Plaza Urquiza, Morris, y Plaza Arenales, Devoto.">
+    <title>Misión Rollers | Clases con Karen</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --pink: #ec168a;
+            --pink-dark: #c80d70;
+            --ink: #111111;
+            --muted: #626068;
+            --paper: #fffafc;
+            --white: #ffffff;
+            --soft-pink: #fff0f8;
+            --shadow: 7px 7px 0 var(--ink);
+            font-family: "Trebuchet MS", Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 6rem;
+        }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 8% 18%, rgba(236, 22, 138, .08) 0 2px, transparent 3px) 0 0 / 24px 24px,
+                var(--paper);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .site-header {
+            position: sticky;
+            z-index: 10;
+            top: 0;
+            border-bottom: 2px solid var(--ink);
+            background: rgba(255, 250, 252, .96);
+            backdrop-filter: blur(12px);
+        }
+
+        .header-inner,
+        .page-content,
+        .footer-inner {
+            width: min(1120px, calc(100% - 40px));
+            margin-inline: auto;
+        }
+
+        .header-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand img {
+            width: 56px;
+            height: 56px;
+            border: 2px solid var(--ink);
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .brand-name,
+        h1,
+        h2,
+        h3,
+        h4,
+        .eyebrow,
+        .button {
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", "Trebuchet MS", sans-serif;
+            letter-spacing: .025em;
+        }
+
+        .brand-name {
+            display: block;
+            font-size: 1.25rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .brand-caption {
+            display: block;
+            margin-top: 4px;
+            color: var(--pink-dark);
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .13em;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-size: .9rem;
+            font-weight: 700;
+        }
+
+        .main-nav a {
+            text-decoration-thickness: 2px;
+            text-underline-offset: 5px;
+            text-decoration-color: transparent;
+        }
+
+        .main-nav a:hover,
+        .main-nav a:focus-visible {
+            text-decoration-color: var(--pink);
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 48px;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 11px 20px;
+            border: 2px solid var(--ink);
+            border-radius: 999px;
+            color: var(--white);
+            background: var(--pink);
+            box-shadow: 3px 3px 0 var(--ink);
+            font-size: .95rem;
+            text-decoration: none;
+            transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--ink);
+            background: var(--pink-dark);
+        }
+
+        .header-button {
+            min-height: 42px;
+            padding-inline: 16px;
+            font-size: .85rem;
+        }
+
+        .page-content {
+            padding-block: 42px 64px;
+        }
+
+        .hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(240px, .85fr) 1.15fr;
+            align-items: center;
+            gap: clamp(32px, 6vw, 76px);
+            overflow: hidden;
+            padding: clamp(28px, 6vw, 68px);
+            border: 2px solid var(--ink);
+            border-radius: 32px;
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .hero::after {
+            position: absolute;
+            z-index: 0;
+            top: -105px;
+            right: -80px;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: var(--soft-pink);
+            content: "";
+        }
+
+        .hero-logo-wrap,
+        .hero-copy {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-logo-wrap {
+            width: min(100%, 340px);
+            justify-self: center;
+            aspect-ratio: 1;
+            padding: 8px;
+            border: 3px solid var(--ink);
+            border-radius: 50%;
+            background: var(--pink);
+            box-shadow: 8px 8px 0 var(--ink);
+            transform: rotate(-3deg);
+        }
+
+        .hero-logo {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--ink);
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 16px;
+            color: var(--pink-dark);
+            font-size: .82rem;
+            font-weight: 900;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--pink);
+            content: "";
+        }
+
+        h1 {
+            max-width: 620px;
+            margin: 0;
+            font-size: clamp(2.8rem, 6.5vw, 5.3rem);
+            line-height: .96;
+            text-transform: uppercase;
+        }
+
+        h1 span {
+            color: var(--pink);
+            text-shadow: 2px 2px 0 var(--ink);
+        }
+
+        .hero-subtitle {
+            margin: 20px 0 12px;
+            font-size: clamp(1.25rem, 2.7vw, 1.8rem);
+            font-weight: 800;
+        }
+
+        .hero-description {
+            max-width: 530px;
+            margin: 0 0 26px;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .hero-note {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin-top: 26px;
+            font-weight: 800;
+        }
+
+        .hero-note-icon {
+            display: grid;
+            width: 42px;
+            height: 42px;
+            flex: 0 0 auto;
+            place-items: center;
+            border: 2px solid var(--ink);
+            border-radius: 50%;
+            background: var(--soft-pink);
+            font-size: 1.3rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-top: 42px;
+        }
+
+        .card {
+            padding: clamp(22px, 3vw, 32px);
+            border: 2px solid var(--ink);
+            border-radius: 24px;
+            background: var(--white);
+            box-shadow: 4px 4px 0 var(--ink);
+        }
+
+        .card h2,
+        .card h3 {
+            margin: 0 0 10px;
+            line-height: 1.1;
+        }
+
+        .card h2 {
+            font-size: clamp(1.55rem, 3vw, 2rem);
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .level-card {
+            background: var(--soft-pink);
+        }
+
+        .roller-icon,
+        .section-icon {
+            display: grid;
+            width: 52px;
+            height: 52px;
+            margin-bottom: 18px;
+            place-items: center;
+            border: 2px solid var(--ink);
+            border-radius: 16px;
+            background: var(--pink);
+            font-size: 1.65rem;
+        }
+
+        .availability {
+            display: inline-flex;
+            margin-top: 22px;
+            padding: 7px 12px;
+            border: 2px solid var(--ink);
+            border-radius: 999px;
+            color: var(--ink);
+            background: var(--white);
+            font-size: .82rem;
+            font-weight: 900;
+        }
+
+        .locations {
+            grid-column: 1 / -1;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .section-heading .section-icon {
+            flex: 0 0 auto;
+            margin: 0;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 4px;
+        }
+
+        .section-heading p {
+            font-size: .9rem;
+        }
+
+        .location-list,
+        .benefit-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .location {
+            padding: 18px;
+            border: 2px solid var(--ink);
+            border-radius: 18px;
+            background: var(--paper);
+        }
+
+        .location h3 {
+            margin-bottom: 2px;
+        }
+
+        .location .place {
+            margin-bottom: 10px;
+            color: var(--pink-dark);
+            font-size: .86rem;
+            font-weight: 800;
+        }
+
+        .location p:last-child {
+            font-size: .9rem;
+        }
+
+        .benefit-list {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .benefit {
+            padding: 16px;
+            border: 2px solid var(--ink);
+            border-radius: 18px;
+            background: var(--paper);
+        }
+
+        .benefit-number {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--pink-dark);
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+            font-size: 1.35rem;
+        }
+
+        .benefit h3 {
+            font-size: 1.05rem;
+        }
+
+        .benefit p {
+            font-size: .86rem;
+        }
+
+        .media-section {
+            margin-top: 42px;
+            padding: clamp(22px, 4vw, 40px);
+            border: 2px solid var(--ink);
+            border-radius: 28px;
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .media-heading {
+            margin-bottom: 28px;
+        }
+
+        .media-heading h2 {
+            margin: 0 0 6px;
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .media-heading p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .media-subsection + .media-subsection {
+            margin-top: 34px;
+            padding-top: 30px;
+            border-top: 2px solid #eee8ec;
+        }
+
+        .media-subtitle {
+            margin: 0 0 16px;
+            font-size: 1.35rem;
+        }
+
+        .photo-grid,
+        .video-grid,
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .media-card {
+            overflow: hidden;
+            border: 2px solid var(--ink);
+            border-radius: 20px;
+            background: var(--paper);
+        }
+
+        .photo-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .media-caption {
+            padding: 14px 16px;
+        }
+
+        .media-caption h4 {
+            margin: 0 0 4px;
+            font-size: 1.05rem;
+        }
+
+        .media-caption p {
+            margin: 0;
+            color: var(--muted);
+            font-size: .88rem;
+        }
+
+        .guide-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 14px;
+            background: var(--soft-pink);
+        }
+
+        .guide-card img {
+            display: block;
+            width: min(100%, 270px);
+            height: auto;
+            border: 2px solid var(--ink);
+            border-radius: 14px;
+        }
+
+        .guide-card .media-caption {
+            align-self: stretch;
+            padding: 14px 4px 2px;
+        }
+
+        .video-card video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: var(--ink);
+            object-fit: cover;
+        }
+
+        .social-card {
+            background: var(--pink);
+        }
+
+        .social-card p,
+        .social-card .eyebrow {
+            color: var(--ink);
+        }
+
+        .social-card .eyebrow::before {
+            background: var(--white);
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            padding-bottom: 3px;
+            border-bottom: 2px solid var(--ink);
+            font-weight: 900;
+            text-decoration: none;
+        }
+
+        .cta {
+            margin-top: 42px;
+            padding: clamp(30px, 5vw, 54px);
+            border: 2px solid var(--ink);
+            border-radius: 28px;
+            background: var(--ink);
+            box-shadow: var(--shadow);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta h2 {
+            margin: 0 0 12px;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .cta p {
+            max-width: 620px;
+            margin: 0 auto 24px;
+            color: #e8e4e7;
+        }
+
+        .cta .button {
+            color: var(--ink);
+            background: var(--white);
+        }
+
+        .cta .button:hover,
+        .cta .button:focus-visible {
+            color: var(--white);
+            background: var(--pink-dark);
+        }
+
+        .site-footer {
+            padding-block: 24px;
+            border-top: 2px solid var(--ink);
+            background: var(--white);
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            color: var(--muted);
+            font-size: .88rem;
+        }
+
+        .footer-inner p {
+            margin: 0;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .footer-links a {
+            color: var(--ink);
+            font-weight: 700;
+            text-decoration-color: var(--pink);
+            text-underline-offset: 4px;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--pink-dark);
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 760px) {
+            .header-inner {
+                min-height: 72px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 36px;
+                text-align: center;
+            }
+
+            .hero-logo-wrap {
+                width: min(68vw, 280px);
+                grid-row: 1;
+            }
+
+            .hero-copy .button {
+                width: 100%;
+            }
+
+            .hero-note {
+                justify-content: center;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .header-inner,
+            .page-content,
+            .footer-inner {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .brand {
+                gap: 8px;
+            }
+
+            .brand img {
+                width: 46px;
+                height: 46px;
+            }
+
+            .brand-name {
+                font-size: 1.05rem;
+            }
+
+            .brand-caption {
+                font-size: .58rem;
+            }
+
+            .header-button {
+                min-height: 40px;
+                padding-inline: 11px;
+                font-size: .77rem;
+            }
+
+            .page-content {
+                padding-top: 24px;
+            }
+
+            .hero {
+                padding: 26px 20px 30px;
+                border-radius: 24px;
+                box-shadow: 5px 5px 0 var(--ink);
+            }
+
+            .hero-description {
+                font-size: .98rem;
+            }
+
+            .content-grid,
+            .location-list,
+            .benefit-list,
+            .photo-grid,
+            .video-grid,
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .locations {
+                grid-column: auto;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+            }
+
+            .section-heading .section-icon {
+                width: 44px;
+                height: 44px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="#" aria-label="Misión Rollers, inicio">
+                <img src="logo.jpg" alt="Logo de Misión Rollers" fetchpriority="high">
+                <span>
+                    <span class="brand-name">Misión Rollers</span>
+                    <span class="brand-caption">Karen · Roller Coach</span>
+                </span>
+            </a>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <a href="#sedes">Sedes</a>
+                <a href="#niveles">Clases</a>
+                <a href="#experiencia">Experiencia</a>
+                <a href="#beneficios">Sobre las clases</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            <a class="button header-button" href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+                <span aria-hidden="true">💬</span> Reservar clase
+            </a>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-logo-wrap">
+                <img class="hero-logo" src="logo.jpg" alt="Sello de Misión Rollers: una patinadora sobre un círculo fucsia">
+            </div>
+            <div class="hero-copy">
+                <p class="eyebrow">Mantené el movimiento</p>
+                <h1 id="hero-title">Hola, soy <span>Karen</span></h1>
+                <p class="hero-subtitle">Clases de rollers 💫</p>
+                <p class="hero-description">
+                    Aprendé desde cero o perfeccioná tu estilo en un espacio seguro, divertido y lleno de buena energía. ¡Superá tus límites sobre ruedas!
+                </p>
+                <a class="button" href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+                    <span aria-hidden="true">🛼</span> ¡Quiero empezar!
+                </a>
+                <div class="hero-note">
+                    <span class="hero-note-icon" aria-hidden="true">💫</span>
+                    <span>Tu nueva pasión sobre 8 ruedas</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-grid">
+            <section id="niveles" class="card level-card" aria-labelledby="levels-title">
+                <div class="roller-icon" aria-hidden="true">🛼</div>
+                <p class="eyebrow">Metodología</p>
+                <h2 id="levels-title">Nivel inicial y principiantes</h2>
+                <p>¿Nunca patinaste o te da miedo dar el primer paso? Clases personalizadas enfocadas en postura, equilibrio, frenado seguro y pérdida del miedo.</p>
+                <span class="availability">¡Cupos abiertos!</span>
+            </section>
+
+            <section id="contacto" class="card social-card" aria-labelledby="social-title">
+                <p class="eyebrow">Comunidad</p>
+                <h2 id="social-title">Seguinos en Instagram</h2>
+                <p>Encontrá rutinas, consejos y toda la energía de cada clase.</p>
+                <a class="social-link" href="https://instagram.com/mision.rollers" target="_blank" rel="noopener noreferrer">
+                    @mision.rollers <span aria-hidden="true">↗</span>
+                </a>
+            </section>
+
+            <section id="sedes" class="card locations" aria-labelledby="locations-title">
+                <div class="section-heading">
+                    <span class="section-icon" aria-hidden="true">📍</span>
+                    <div>
+                        <h2 id="locations-title">Nuestras sedes</h2>
+                        <p>Encontranos en estos espacios al aire libre.</p>
+                    </div>
+                </div>
+                <div class="location-list">
+                    <article class="location">
+                        <h3>Plaza Urquiza</h3>
+                        <p class="place">Morris, Buenos Aires</p>
+                        <p>Un punto de encuentro ideal para aprender y disfrutar sobre ruedas.</p>
+                    </article>
+                    <article class="location">
+                        <h3>Plaza Arenales</h3>
+                        <p class="place">Devoto, CABA</p>
+                        <p>Un clásico espacio verde para practicar y compartir la pasión por los rollers.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="beneficios" class="card" aria-labelledby="benefits-title">
+                <div class="section-heading">
+                    <span class="section-icon" aria-hidden="true">✦</span>
+                    <div>
+                        <h2 id="benefits-title">¿Por qué sumarte?</h2>
+                        <p>Una actividad para disfrutar y crecer a tu ritmo.</p>
+                    </div>
+                </div>
+                <div class="benefit-list">
+                    <article class="benefit">
+                        <span class="benefit-number">01</span>
+                        <h3>Diversión</h3>
+                        <p>Clases dinámicas donde disfrutar es la prioridad.</p>
+                    </article>
+                    <article class="benefit">
+                        <span class="benefit-number">02</span>
+                        <h3>Técnica y seguridad</h3>
+                        <p>Postura, control y confianza para patinar sin miedo.</p>
+                    </article>
+                    <article class="benefit">
+                        <span class="benefit-number">03</span>
+                        <h3>Comunidad</h3>
+                        <p>Compartí la pasión con personas con tu misma onda.</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <section id="experiencia" class="media-section" aria-labelledby="experience-title">
+            <div class="media-heading">
+                <p class="eyebrow">Misión Rollers en acción</p>
+                <h2 id="experience-title">Así se vive sobre ruedas</h2>
+                <p>Un vistazo a las prácticas, los rollers y lo que podés aprender en cada nivel.</p>
+            </div>
+
+            <div class="media-subsection">
+                <h3 class="media-subtitle">Momentos de práctica</h3>
+                <div class="photo-grid">
+                    <figure class="media-card photo-card">
+                        <img src="roller_artistico.jpg" alt="Patinadora practicando equilibrio sobre rollers en una plaza" loading="lazy" width="1440" height="1920">
+                        <figcaption class="media-caption">
+                            <h4>Equilibrio y movimiento</h4>
+                            <p>Practicá a tu ritmo y disfrutá cada avance.</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="media-card photo-card">
+                        <img src="roller_primer_plano.webp" alt="Primer plano de un par de rollers listos para salir a la plaza" loading="lazy" width="1440" height="1920">
+                        <figcaption class="media-caption">
+                            <h4>¡A rodar!</h4>
+                            <p>La próxima historia sobre ruedas puede ser la tuya.</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="media-subsection">
+                <h3 class="media-subtitle">¿Qué nivel es el tuyo?</h3>
+                <div class="guide-grid">
+                    <figure class="media-card guide-card">
+                        <img src="nivel_inicial.webp" alt="Guía de nivel inicial: nunca patinaste, te cuesta parar o estás empezando con el equilibrio" loading="lazy" width="1080" height="1920">
+                        <figcaption class="media-caption">
+                            <h4>Nivel inicial</h4>
+                            <p>Empezá con confianza, paso a paso.</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="media-card guide-card">
+                        <img src="nivel_principiante.webp" alt="Guía de nivel principiante: buen equilibrio, deslizamiento y conocimientos básicos de freno" loading="lazy" width="1080" height="1920">
+                        <figcaption class="media-caption">
+                            <h4>Nivel principiante</h4>
+                            <p>Seguí sumando técnica y seguridad.</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="media-subsection">
+                <h3 class="media-subtitle">Un vistazo a las clases</h3>
+                <div class="video-grid">
+                    <figure class="media-card video-card">
+                        <video controls playsinline preload="none" poster="roller_artistico.jpg" aria-label="Video de práctica de rollers en el Rosedal de Palermo">
+                            <source src="practica_rosedal_palermo.mp4" type="video/mp4">
+                            Tu navegador no puede reproducir este video.
+                        </video>
+                        <figcaption class="media-caption">
+                            <h4>Práctica en el Rosedal</h4>
+                            <p>Un recorrido por una práctica al aire libre.</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="media-card video-card">
+                        <video controls playsinline preload="none" poster="roller_primer_plano.webp" aria-label="Video de una práctica de rollers">
+                            <source src="video_prueba_roller.mp4" type="video/mp4">
+                            Tu navegador no puede reproducir este video.
+                        </video>
+                        <figcaption class="media-caption">
+                            <h4>Momentos sobre ruedas</h4>
+                            <p>La energía de salir a patinar y seguir aprendiendo.</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta" aria-labelledby="cta-title">
+            <h2 id="cta-title">¿Lista/o para ponerte los rollers?</h2>
+            <p>Consultá días y horarios disponibles y reservá tu lugar en la plaza que te quede más cómoda.</p>
+            <a class="button" href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+                <span aria-hidden="true">💬</span> Escribime por WhatsApp
+            </a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p><strong>Misión Rollers</strong> · © 2026 · Mantené el movimiento 💫</p>
+            <div class="footer-links">
+                <a href="https://instagram.com/mision.rollers" target="_blank" rel="noopener noreferrer">@mision.rollers</a>
+                <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">Contacto directo</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
