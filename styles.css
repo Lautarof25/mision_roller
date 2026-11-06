@@ -174,7 +174,7 @@ h4,
     inset: 0;
     background:
         linear-gradient(90deg, rgba(255, 250, 252, .96) 0%, rgba(255, 250, 252, .88) 45%, rgba(255, 250, 252, .65) 100%),
-        url("roller_primer_plano.webp") center 58% / cover;
+        url("roller_primer_plano.avif") center 58% / cover;
     content: "";
 }
 
@@ -895,7 +895,7 @@ h1 span {
     .hero::before {
         background-image:
             linear-gradient(rgba(255, 250, 252, .9), rgba(255, 250, 252, .92)),
-            url("roller_primer_plano.webp");
+            url("roller_primer_plano.avif");
         background-position: center, 62% 55%;
     }
 
