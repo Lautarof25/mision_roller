@@ -233,7 +233,7 @@
                 <h3 class="media-subtitle">Un vistazo a las clases</h3>
                 <div class="video-grid">
                     <figure class="media-card video-card">
-                        <video controls playsinline preload="none" poster="roller_artistico.jpg" aria-label="Video de práctica de rollers en el Rosedal de Palermo">
+                        <video controls playsinline preload="none" poster="roller_artistico_mobile.avif" data-poster-mobile="roller_artistico_mobile.avif" data-poster-desktop="roller_artistico_desktop.avif" aria-label="Video de práctica de rollers en el Rosedal de Palermo">
                             <source src="practica_rosedal_palermo.mp4" type="video/mp4">
                             Tu navegador no puede reproducir este video.
                         </video>
@@ -243,7 +243,7 @@
                         </figcaption>
                     </figure>
                     <figure class="media-card video-card">
-                        <video controls playsinline preload="none" poster="roller_primer_plano.webp" aria-label="Video de una práctica de rollers">
+                        <video controls playsinline preload="none" poster="roller_primer_plano.avif" aria-label="Video de una práctica de rollers">
                             <source src="video_prueba_roller.mp4" type="video/mp4">
                             Tu navegador no puede reproducir este video.
                         </video>
@@ -284,5 +284,20 @@
             </div>
         </div>
     </footer>
+    <script>
+        const responsiveVideoPoster = document.querySelector("video[data-poster-desktop]");
+        const desktopViewport = window.matchMedia("(min-width: 761px)");
+
+        function updateVideoPoster() {
+            if (responsiveVideoPoster) {
+                responsiveVideoPoster.poster = desktopViewport.matches
+                    ? responsiveVideoPoster.dataset.posterDesktop
+                    : responsiveVideoPoster.dataset.posterMobile;
+            }
+        }
+
+        updateVideoPoster();
+        desktopViewport.addEventListener("change", updateVideoPoster);
+    </script>
 </body>
 </html>
