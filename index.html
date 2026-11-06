@@ -26,15 +26,18 @@
     <meta name="twitter:image" content="https://lautarof25.github.io/mision_roller/og_image.jpg">
     <meta name="twitter:image:alt" content="Misión Rollers - Clases de rollers con Karen">
     
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
-    <link rel="preload" href="roller_primer_plano.webp" as="image" fetchpriority="high">
+    <link rel="icon" type="image/png" href="logo_mobile.png">
+    <link rel="preload" href="roller_primer_plano.avif" as="image" fetchpriority="high">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="site-header">
         <div class="header-inner">
             <a class="brand" href="#" aria-label="Misión Rollers, inicio">
-                <img src="logo.jpg" alt="Logo de Misión Rollers" width="1080" height="1080">
+                <picture>
+                    <source media="(min-width: 761px)" srcset="logo_desktop.avif">
+                    <img src="logo_mobile.avif" alt="Logo de Misión Rollers" width="1080" height="1080">
+                </picture>
                 <span>
                     <span class="brand-name">Misión Rollers</span>
                     <span class="brand-caption">Karen · Roller Coach</span>
@@ -56,7 +59,10 @@
     <main class="page-content">
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-logo-wrap">
-                <img class="hero-logo" src="logo.jpg" alt="Sello de Misión Rollers: una patinadora sobre un círculo fucsia" width="1080" height="1080">
+                <picture>
+                    <source media="(min-width: 761px)" srcset="logo_desktop.avif">
+                    <img class="hero-logo" src="logo_mobile.avif" alt="Sello de Misión Rollers: una patinadora sobre un círculo fucsia" width="1080" height="1080">
+                </picture>
             </div>
             <div class="hero-copy">
                 <p class="eyebrow">Mantené el movimiento</p>
@@ -94,7 +100,7 @@
                 <p>Conocé la dinámica de una clase y preparate para disfrutar sobre ruedas.</p>
             </div>
             <figure class="media-card video-card class-preview-video">
-                <video controls playsinline preload="none" poster="roller_primer_plano.webp" aria-label="Video que muestra cómo se desarrolla una clase de rollers">
+                <video controls playsinline preload="none" poster="roller_primer_plano.avif" aria-label="Video que muestra cómo se desarrolla una clase de rollers">
                     <source src="clase_vistazo.mp4" type="video/mp4">
                     Tu navegador no puede reproducir este video.
                 </video>
@@ -184,14 +190,17 @@
                 <h3 class="media-subtitle">Momentos de práctica</h3>
                 <div class="photo-grid">
                     <figure class="media-card photo-card">
-                        <img src="roller_artistico.jpg" alt="Patinadora practicando equilibrio sobre rollers en una plaza" loading="lazy" decoding="async" width="1440" height="1920">
+                        <picture>
+                            <source media="(min-width: 761px)" srcset="roller_artistico_desktop.avif">
+                            <img src="roller_artistico_mobile.avif" alt="Patinadora practicando equilibrio sobre rollers en una plaza" loading="lazy" decoding="async" width="1440" height="1920">
+                        </picture>
                         <figcaption class="media-caption">
                             <h4>Equilibrio y movimiento</h4>
                             <p>Practicá a tu ritmo y disfrutá cada avance.</p>
                         </figcaption>
                     </figure>
                     <figure class="media-card photo-card">
-                        <img src="roller_primer_plano.webp" alt="Primer plano de un par de rollers listos para salir a la plaza" loading="lazy" decoding="async" width="1440" height="1920">
+                        <img src="roller_primer_plano.avif" alt="Primer plano de un par de rollers listos para salir a la plaza" loading="lazy" decoding="async" width="1440" height="1920">
                         <figcaption class="media-caption">
                             <h4>¡A rodar!</h4>
                             <p>La próxima historia sobre ruedas puede ser la tuya.</p>
